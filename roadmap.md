@@ -21,6 +21,8 @@ inspired from https://youtu.be/_oRNrzSlw8I
 ![alt text](public/answer_when_online.png)
     Shows the bot actively responding in `#ai-chat` once online, including greetings and project-oriented follow-up prompts after user messages such as `hi`, `how are you?`, and `I want to use this template repo for my project`. This validates live reply generation and context-aware conversational continuity.
 
+Tutorial: https://www.youtube.com/watch?v=vqRAfOL3Hgw
+
 The existing bot is intentionally minimal and safe:
 
 ```
