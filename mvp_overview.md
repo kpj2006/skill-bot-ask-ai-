@@ -139,9 +139,10 @@ Description:
 
 1. MVP is intentionally single-channel (`DISCORD_CHANNEL_ID`) for safety.
 2. Replies are guided by local context from `SKILL_FILE_PATH` (default `.clinerules`).
-3. Ollama is required locally at `http://localhost:11434`.
+3. Ollama is required locally at `http://localhost:11434` on the admin/mentor machine (not on user/client systems).
 4. Startup includes Ollama readiness polling before backlog processing.
 5. Backlog replay uses channel history and last bot message heuristics.
 6. A global async lock serializes model calls to avoid request clashes.
 7. Error handling covers timeout, request failures, and unexpected generation errors.
 8. A Windows hidden launcher script supports auto-start behavior.
+9. The system is offline-resilient and queue-less by design: if the host (mentor/admin machine running Ollama locally) goes offline, messages are not lost; once back online, it checks the last bot message in the Discord channel and reconstructs pending work using channel history, effectively forming a temporary in-memory queue only at runtime (not persistently stored), primarily to prevent race conditions, avoid duplicate processing, and ensure correct message ordering.
